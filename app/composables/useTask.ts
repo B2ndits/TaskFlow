@@ -9,7 +9,7 @@ export async function useTask(id: string) {
 
   async function save(patch: Partial<TaskInput>) {
     const updated = await taskApi.update(id, patch)
-    task.value = updated            // ⚠️ Nuxt 4：data 是 shallowRef，必须整体替换！
+    task.value = updated            // Nuxt 4：data 是 shallowRef，必须整体替换！
     await refreshNuxtData('tasks:list')   // 让列表页的缓存同步最新数据
     return updated
   }
