@@ -3,7 +3,7 @@ export const taskApi = {
   list: (query: { status?: string, q?: string }) => $fetch<Task[]>('/api/tasks', { query }),
   detail: (id: string) => $fetch<Task>(`/api/tasks/${id}`),
   create: (body: TaskInput) => $fetch<Task>(`/api/tasks`, { method: 'POST', body }),
-  update: (id: string, patch: Partial<TaskInput>) => $fetch<Task>(`api/tasks/${id}`, { method: 'PATCH', body: patch }),
+  update: (id: string, patch: Partial<TaskInput>) => $fetch<Task>(`/api/tasks/${id}`, { method: 'PATCH', body: patch }),
   remove: (id: string) => $fetch(`/api/tasks/${id}`, { method: 'DELETE' })
 }
 
