@@ -712,7 +712,6 @@ async function onSubmit() {
 ```vue [app/pages/tasks/index.vue]
 <script setup lang="ts">
 useSeoMeta({ title: '我的任务' })
-definePageMeta({ middleware: ['auth'] })   // 双保险：全局守卫已兜底，这里示范具名叠加
 
 // 数据逻辑全部在 composable，页面只做编排
 const { filter, keyword, tasks, status, error, createTask, updateTask, removeTask } = useTasks()
@@ -766,8 +765,6 @@ const { filter, keyword, tasks, status, error, createTask, updateTask, removeTas
 import type { TaskStatus } from '#shared/types/task'
 
 definePageMeta({
-  middleware: ['auth'],
-  // 参数校验：非合法 id 直接 404（基础篇第 6 章 validate）
   validate: (route) => typeof route.params.id === 'string',
 })
 
